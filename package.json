@@ -1,0 +1,25 @@
+{
+  "name": "notes-mern",
+  "version": "1.0.0",
+  "description": "A full-stack notes application built with the MERN stack (MongoDB, Express, React, Node.js).",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "cross-env NODE_ENV=production npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alpha-Dev001/A-full-stack-notes-application-built-with-MERN-stack-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alpha-Dev001/A-full-stack-notes-application-built-with-MERN-stack-/issues"
+  },
+  "homepage": "https://github.com/Alpha-Dev001/A-full-stack-notes-application-built-with-MERN-stack-#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
