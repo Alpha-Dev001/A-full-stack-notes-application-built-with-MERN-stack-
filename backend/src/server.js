@@ -14,26 +14,26 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors(
     {
-    origin:"*",
+        origin: "*",
     }
 ));
 app.use(express.json());
 
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     console.log(`Req method is ${req.method} & Req URL is ${req.url}`)
     next();
 })
 
-app.use('/api',rateLimiter);
-app.get("/",(req,res)=>{
+app.use('/api', rateLimiter);
+app.get("/", (req, res) => {
     res.send('Server is live');
 })
 
 app.use("/api/notes", notesRoutes);
 
-connectDB().then(()=>{
+connectDB().then(() => {
     app.listen(PORT, () => {
-    console.log(`The server is runnig on port ${PORT}`);
-  });
+        console.log(`The server is runnig on port ${PORT}`);
+    });
 });

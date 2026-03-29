@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router";
- 
+
 const FloatingParticle = ({ delay, duration, x, size, opacity }) => (
   <div
     style={{
@@ -19,13 +19,13 @@ const FloatingParticle = ({ delay, duration, x, size, opacity }) => (
     }}
   />
 );
- 
+
 const PenPath = () => {
   const [progress, setProgress] = useState(0);
   const rafRef = useRef(null);
   const startRef = useRef(null);
   const duration = 2800;
- 
+
   useEffect(() => {
     const animate = (ts) => {
       if (!startRef.current) startRef.current = ts;
@@ -45,10 +45,10 @@ const PenPath = () => {
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
- 
+
   const totalLen = 220;
   const drawn = progress * totalLen;
- 
+
   return (
     <svg viewBox="0 0 200 120" style={{ width: "100%", height: "100%" }} fill="none">
       <path d="M20 90 Q60 30 100 60 Q140 90 180 20" stroke="rgba(134,239,172,0.15)" strokeWidth="1.5" strokeLinecap="round" fill="none" />
@@ -69,7 +69,7 @@ const PenPath = () => {
     </svg>
   );
 };
- 
+
 const NotesNotFound = () => {
   const particles = Array.from({ length: 18 }, (_, i) => ({
     delay: (i * 1.3) % 8,
@@ -78,11 +78,11 @@ const NotesNotFound = () => {
     size: 2 + (i % 3),
     opacity: 0.15 + (i % 4) * 0.07,
   }));
- 
+
   const ghostCards = [
     { index: 0 }, { index: 1 }, { index: 2 }, { index: 3 },
   ];
- 
+
   return (
     <>
       <style>{`
@@ -139,7 +139,7 @@ const NotesNotFound = () => {
         .nnf-pulse   { animation: nnf-pulse 3s ease-in-out infinite; }
         .nnf-bounce  { animation: nnf-bounce 3.5s ease-in-out infinite; }
       `}</style>
- 
+
       <div
         style={{
           position: "relative",
@@ -147,7 +147,7 @@ const NotesNotFound = () => {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          height: "calc(100vh - 64px)",
+          height: "99%",
           overflow: "hidden",
           background: "linear-gradient(160deg, #052e16 0%, #041a0d 40%, #000000 100%)",
         }}
@@ -157,7 +157,7 @@ const NotesNotFound = () => {
           position: "absolute", inset: 0, pointerEvents: "none", zIndex: 20,
           background: "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.6) 80%, rgba(0,0,0,0.97) 100%)",
         }} />
- 
+
         {/* Glow blobs */}
         <div style={{
           position: "absolute", top: "10%", left: "15%",
@@ -171,19 +171,19 @@ const NotesNotFound = () => {
           background: "radial-gradient(circle, rgba(20,83,45,0.15) 0%, transparent 70%)",
           filter: "blur(50px)",
         }} />
- 
+
         {/* Grid */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
           backgroundImage: "linear-gradient(rgba(134,239,172,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(134,239,172,0.03) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }} />
- 
+
         {/* Particles */}
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
           {particles.map((p, i) => <FloatingParticle key={i} {...p} />)}
         </div>
- 
+
         {/* Ghost cards */}
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
           {ghostCards.map((card, i) => (
@@ -202,10 +202,10 @@ const NotesNotFound = () => {
             </div>
           ))}
         </div>
- 
+
         {/* Main content */}
         <div style={{ position: "relative", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 24px", maxWidth: "420px" }}>
- 
+
           {/* Icon */}
           <div className="nnf-f1" style={{ position: "relative", width: "148px", height: "148px", marginBottom: "32px" }}>
             <div className="nnf-pulse absolute inset-0 rounded-full" style={{ border: "1px solid rgba(134,239,172,0.22)" }} />
@@ -228,7 +228,7 @@ const NotesNotFound = () => {
               <PenPath />
             </div>
           </div>
- 
+
           {/* Heading */}
           <h3 className="nnf-f2" style={{
             fontFamily: "Georgia, serif",
@@ -244,7 +244,7 @@ const NotesNotFound = () => {
           }}>
             No notes yet
           </h3>
- 
+
           {/* Subtext */}
           <p className="nnf-f3" style={{
             fontFamily: "system-ui, sans-serif",
@@ -262,10 +262,10 @@ const NotesNotFound = () => {
           }}>
             Create your first note to get started on your journey.
           </p>
- 
+
           {/* CTA — uses Link like the original */}
           <Link
-            to="/create"
+            to="/app/create"
             className="nnf-f4 btn btn-primary"
             style={{ borderRadius: "9999px", paddingLeft: "28px", paddingRight: "28px" }}
           >
@@ -275,7 +275,7 @@ const NotesNotFound = () => {
             </svg>
             Create Your First Note
           </Link>
- 
+
           {/* Keyboard hint */}
           <p className="nnf-f4" style={{
             marginTop: "22px", fontFamily: "system-ui, sans-serif",
@@ -294,6 +294,6 @@ const NotesNotFound = () => {
     </>
   );
 };
- 
+
 export default NotesNotFound;
- 
+
