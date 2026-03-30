@@ -5,7 +5,7 @@ import path from "path"
 
 import { connectDB } from "./config/db.js";
 import notesRoutes from "./routes/notesRoutes.js";
-import rateLimiter from "./middleware/rateLimiter.js";
+import rateLimiter from "./middleware/ratelimiter.js";
 
 // Set NODE_ENV to production if not set (for deployment)
 if (!process.env.NODE_ENV) {
