@@ -49,12 +49,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 connectDB()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`The server is running on port ${PORT}`);
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`The server is running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('Failed to connect to MongoDB:', error);
+        process.exit(1);
     });
-  })
-  .catch((error) => {
-    console.error('Failed to connect to MongoDB:', error);
-    process.exit(1);
-  });
