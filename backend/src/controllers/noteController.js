@@ -22,6 +22,9 @@ export async function getNoteById(req, res) {
     res.status(200).json(note);
   } catch (error) {
     console.log(`Server error : ${error}`)
+    res.status(500).json({
+      message: 'Internal server error'
+    })
   }
 }
 
@@ -49,7 +52,7 @@ export async function updateNotes(req, res) {
     const updatedNotes = await Note.findByIdAndUpdate(req.params.id, { title, content }, {
       returnDocument: "after"
     })
-    if (!updateNotes) return res.status(404).json({ message: "Notes not found" })
+    if (!updatedNotes) return res.status(404).json({ message: "Notes not found" })
     res.status(200).json(updatedNotes);
 
   } catch (error) {
@@ -65,7 +68,7 @@ export async function updateNotes(req, res) {
 export async function deleteNotes(req, res) {
   try {
     const deletedNotes = await Note.findByIdAndDelete(req.params.id)
-    if (!deleteNotes) return res.status(404).json({ message: "Notes not found" });
+    if (!deletedNotes) return res.status(404).json({ message: "Notes not found" });
     res.status(200).json({
       message: "Notes deleted successfully"
     });

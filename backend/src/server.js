@@ -16,9 +16,7 @@ const __dirname = path.resolve()
 
 // CORS configuration
 const corsOptions = {
-    origin: process.env.NODE_ENV === "production"
-        ? false // In production, this should be your actual frontend domain
-        : "*", // Allow all origins in development
+    origin: "*", // Allow all origins since frontend and backend are served together
     credentials: true
 };
 
