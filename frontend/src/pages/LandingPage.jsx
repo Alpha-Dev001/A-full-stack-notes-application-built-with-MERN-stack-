@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon, BrainCircuitIcon, LockIcon, SparklesIcon, ZapIcon, CheckCircleIcon } from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 function LandingPage() {
-  const [email, setEmail] = useState('');
   const [scrolled, setScrolled] = useState(false);
-  const heroRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);

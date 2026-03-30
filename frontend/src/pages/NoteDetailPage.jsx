@@ -10,7 +10,6 @@ import api from "../lib/axios";
 const NoteDetailPage = () => {
   const [note, setNote] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
   const [isRateLimited, setIsRateLimited] = useState(false);
   const [noteNotFound, setNoteNotFound] = useState(false);
 
@@ -41,7 +40,7 @@ const NoteDetailPage = () => {
 
   const handleUpdate = async () => {
     try {
-      const res = await api.put(`/notes/${id}`, note)
+      await api.put(`/notes/${id}`, note)
       toast.success("Note updated successfully")
       navigate("/app")
     } catch (error) {
@@ -55,7 +54,7 @@ const NoteDetailPage = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await api.delete(`/notes/${id}`)
+      await api.delete(`/notes/${id}`)
       toast.success("Note deleted successfully")
       navigate("/app")
     } catch (error) {
